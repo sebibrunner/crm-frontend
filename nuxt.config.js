@@ -46,19 +46,19 @@ export default {
           property: 'token',
           global: true,
           // required: true,
-          type: 'Bearer'
+          type: 'Bearer',
         },
         user: {
           property: 'user',
-          autoFetch: true
+          autoFetch: true,
         },
         endpoints: {
           login: { url: 'http://localhost:3000/auth/login', method: 'post' },
           logout: { url: 'http://localhost:3000/auth/logout', method: 'post' },
-          user: { url: 'http://localhost:3000/auth/user', method: 'get' }
-        }
-      }
-    }
+          user: { url: 'http://localhost:3000/auth/user', method: 'get' },
+        },
+      },
+    },
     // Auth Options
   },
 

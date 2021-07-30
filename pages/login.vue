@@ -3,11 +3,11 @@
     <form @submit.prevent="userLogin">
       <div>
         <label>Username</label>
-        <input type="text" v-model="login.username" />
+        <input v-model="login.username" type="text" />
       </div>
       <div>
         <label>Password</label>
-        <input type="text" v-model="login.password" />
+        <input v-model="login.password" type="text" />
       </div>
       <div>
         <button type="submit">Submit</button>
@@ -22,19 +22,21 @@ export default {
     return {
       login: {
         username: '',
-        password: ''
-      }
+        password: '',
+      },
     }
   },
   methods: {
     async userLogin() {
       try {
-        let response = await this.$auth.loginWith('local', { data: this.login })
+        const response = await this.$auth.loginWith('local', {
+          data: this.login,
+        })
         console.log(response)
       } catch (err) {
         console.log(err)
       }
-    }
-  }
+    },
+  },
 }
 </script>
