@@ -1,49 +1,40 @@
 <template>
-   <v-app id="inspire">
-      <v-main>
-         <v-container fluid fill-height>
-            <v-layout align-center justify-center>
-               <v-flex xs12 sm8 md4>
-                  <v-card class="elevation-12">
-                     <v-toolbar dark color="primary">
-                        <v-toolbar-title>Login form</v-toolbar-title>
-                     </v-toolbar>
-                     <v-card-text>
-                        <v-form>
-                           <v-text-field
-                              prepend-icon="mdi-account"
-                              name="login"
-                              label="Login"
-                              type="text"
-                           ></v-text-field>
-                           <v-text-field
-                              id="password"
-                              prepend-icon="mdi-lock"
-                              name="password"
-                              label="Password"
-                              type="password"
-                           ></v-text-field>
-                        </v-form>
-                     </v-card-text>
-                     <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="primary" to="/">Login</v-btn>
-                     </v-card-actions>
-                  </v-card>
-               </v-flex>
-            </v-layout>
-         </v-container>
-      </v-main>
-   </v-app>
+  <div>
+    <form @submit.prevent="userLogin">
+      <div>
+        <label>Username</label>
+        <input type="text" v-model="login.username" />
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="text" v-model="login.password" />
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
-   name: 'Login',
-   props: {
-      source: String,
-   },
-};
+  data() {
+    return {
+      login: {
+        username: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    async userLogin() {
+      try {
+        let response = await this.$auth.loginWith('local', { data: this.login })
+        console.log(response)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
+}
 </script>
-
-<style></style>
