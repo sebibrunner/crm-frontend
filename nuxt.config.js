@@ -53,8 +53,8 @@ export default {
           autoFetch: true,
         },
         endpoints: {
-          login: { url: 'http://localhost:5000/auth/login', method: 'post' },
-          logout: { url: 'http://localhost:5000/auth/logout', method: 'post' },
+          login: { url: 'http://localhost:5000/auth', method: 'post' },
+          logout: { url: 'http://localhost:5000/auth', method: 'post' },
           user: { url: 'http://localhost:5000/profile', method: 'get' },
         },
       },

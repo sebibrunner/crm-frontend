@@ -3,8 +3,8 @@
     <h2 class="title has-text-centered">Login!</h2>
     <form @submit.prevent="userLogin">
       <div>
-        <label>Username</label>
-        <input v-model="login.username" type="text" />
+        <label>Email</label>
+        <input v-model="login.email" type="text" />
       </div>
       <div>
         <label>Password</label>
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       login: {
-        username: '',
+        email: '',
         password: '',
       },
     }

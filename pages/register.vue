@@ -7,13 +7,13 @@
 
           <form method="post" @submit.prevent="register">
             <div class="field">
-              <label class="label">Username</label>
+              <label class="label">Email</label>
               <div class="control">
                 <input
-                  type="text"
+                  type="email"
                   class="input"
-                  name="username"
-                  v-model="username"
+                  name="email"
+                  v-model="email"
                   required
                 />
               </div>
@@ -45,12 +45,16 @@
 </template>
 
 <script>
+import Notification from '~/components/Notification'
 
 export default {
+  components: {
+    Notification,
+  },
 
   data() {
     return {
-      username: '',
+      email: '',
       password: '',
       error: null
     }
@@ -59,13 +63,14 @@ export default {
   methods: {
     async register() {
       try {
-        await this.$axios.post('user', {
-          username: this.username,
+        await this.$axios.post('users', {
+          email: this.email,
           password: this.password
         })
 
         await this.$auth.loginWith('local', {
           data: {
+          email: this.email,
           password: this.password
           },
         })
