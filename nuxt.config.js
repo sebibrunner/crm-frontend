@@ -43,7 +43,7 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'token',
+          property: 'access_token',
           global: true,
           // required: true,
           type: 'Bearer',
@@ -53,9 +53,9 @@ export default {
           autoFetch: true,
         },
         endpoints: {
-          login: { url: 'http://localhost:3000/auth/login', method: 'post' },
-          logout: { url: 'http://localhost:3000/auth/logout', method: 'post' },
-          user: { url: 'http://localhost:3000/auth/user', method: 'get' },
+          login: { url: 'http://localhost:5000/auth/login', method: 'post' },
+          logout: { url: 'http://localhost:5000/auth/logout', method: 'post' },
+          user: { url: 'http://localhost:5000/profile', method: 'get' },
         },
       },
     },
@@ -63,7 +63,9 @@ export default {
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:5000/'
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -76,7 +78,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -95,6 +97,6 @@ export default {
   build: {},
 
   router: {
-    middleware: ['auth'],
+    //middleware: ['auth'],
   },
 }

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2 class="title has-text-centered">Login!</h2>
     <form @submit.prevent="userLogin">
       <div>
         <label>Username</label>
@@ -13,6 +14,9 @@
         <button type="submit">Submit</button>
       </div>
     </form>
+    <div class="has-text-centered" style="margin-top: 20px">
+      New here? <nuxt-link to="/register">Register</nuxt-link>
+    </div>
   </div>
 </template>
 
