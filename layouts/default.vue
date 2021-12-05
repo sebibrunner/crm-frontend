@@ -54,6 +54,12 @@
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
+        <v-list-item v-if="$auth.loggedIn" @click.native="logout">
+          <v-list-item-action>
+            <v-icon light> mdi-logout </v-icon>
+          </v-list-item-action>
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-footer :absolute="!fixed" app>
@@ -86,6 +92,11 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js',
     }
+  },
+  methods: {
+    logout() {
+      this.$auth.logout('local').then(this.$router.push('/login'))
+    },
   },
 }
 </script>

@@ -49,12 +49,11 @@ export default {
           type: 'Bearer',
         },
         user: {
-          property: 'user',
+          property: '',
           autoFetch: true,
         },
         endpoints: {
-          login: { url: 'http://localhost:5000/auth', method: 'post' },
-          logout: { url: 'http://localhost:5000/auth', method: 'post' },
+          login: { url: 'http://localhost:5000/auth/login', method: 'post' },
           user: { url: 'http://localhost:5000/profile', method: 'get' },
         },
       },
@@ -64,7 +63,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:5000/'
+    baseURL: 'http://localhost:5000/',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -97,6 +96,6 @@ export default {
   build: {},
 
   router: {
-    //middleware: ['auth'],
+    middleware: ['auth'],
   },
 }

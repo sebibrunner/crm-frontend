@@ -7,6 +7,10 @@
         <input v-model="login.email" type="text" />
       </div>
       <div>
+        <label>Username</label>
+        <input v-model="login.username" type="text" />
+      </div>
+      <div>
         <label>Password</label>
         <input v-model="login.password" type="text" />
       </div>
@@ -22,10 +26,12 @@
 
 <script>
 export default {
+  auth: false,
   data() {
     return {
       login: {
         email: '',
+        username: '',
         password: '',
       },
     }
@@ -36,7 +42,7 @@ export default {
         const response = await this.$auth.loginWith('local', {
           data: this.login,
         })
-        console.log(response)
+        this.$router.push('/')
       } catch (err) {
         console.log(err)
       }

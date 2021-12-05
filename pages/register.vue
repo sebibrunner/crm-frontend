@@ -10,10 +10,22 @@
               <label class="label">Email</label>
               <div class="control">
                 <input
+                  v-model="email"
                   type="email"
                   class="input"
                   name="email"
-                  v-model="email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control">
+                <input
+                  v-model="username"
+                  type="text"
+                  class="input"
+                  name="username"
                   required
                 />
               </div>
@@ -22,16 +34,18 @@
               <label class="label">Password</label>
               <div class="control">
                 <input
+                  v-model="password"
                   type="password"
                   class="input"
                   name="password"
-                  v-model="password"
                   required
                 />
               </div>
             </div>
             <div class="control">
-              <button type="submit" class="button is-dark is-fullwidth">Register</button>
+              <button type="submit" class="button is-dark is-fullwidth">
+                Register
+              </button>
             </div>
           </form>
 
@@ -48,6 +62,7 @@
 import Notification from '~/components/Notification'
 
 export default {
+  auth: false,
   components: {
     Notification,
   },
@@ -55,8 +70,9 @@ export default {
   data() {
     return {
       email: '',
+      username: '',
       password: '',
-      error: null
+      error: null,
     }
   },
 
@@ -65,13 +81,15 @@ export default {
       try {
         await this.$axios.post('users', {
           email: this.email,
-          password: this.password
+          username: this.username,
+          password: this.password,
         })
 
         await this.$auth.loginWith('local', {
           data: {
-          email: this.email,
-          password: this.password
+            email: this.email,
+            username: this.username,
+            password: this.password,
           },
         })
 
@@ -79,7 +97,7 @@ export default {
       } catch (e) {
         this.error = e.response.data.message
       }
-    }
-  }
+    },
+  },
 }
 </script>
