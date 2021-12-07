@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>documents:</h1>
-    <div v-for="(document, key) in documents" :key="key">
-      {{ document.title }}
+    <h1>invoices:</h1>
+    <div v-for="(invoice, key) in invoices" :key="key">
+      {{ invoice.title }}
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      documents: [],
+      invoices: [],
     }
   },
   async fetch() {

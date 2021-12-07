@@ -78,13 +78,28 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Home',
           to: '/',
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          title: 'Customers',
+          to: '/customer',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Invoices',
+          to: '/invoice',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Offers',
+          to: '/offer',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Products',
+          to: '/product',
         },
       ],
       miniVariant: false,
