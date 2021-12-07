@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>addresss:</h1>
-    <div v-for="(address, key) in addresss" :key="key">
+    <div v-for="(address, key) in addresses" :key="key">
       {{ address.title }}
     </div>
   </div>
@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      addresss: [],
+      addresses: Array<Address>[],
     }
   },
   async fetch() {
