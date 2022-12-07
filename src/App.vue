@@ -31,8 +31,6 @@ export default defineComponent({
     />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login" v-if="!this.token">Login</RouterLink>
@@ -51,6 +49,7 @@ export default defineComponent({
 header {
   line-height: 1.5;
   max-height: 100vh;
+  top: 0;
 }
 
 .logo {

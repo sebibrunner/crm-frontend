@@ -7,7 +7,6 @@ import { mapActions } from 'pinia';
 export default defineComponent({
   data() {
     return {
-      count: 1,
       user: {
         username: "",
         password: ""
@@ -20,6 +19,7 @@ export default defineComponent({
       console.log("user: ", user)
       axios.post("http://localhost:5000/auth/login", user).then((res) => {
         this.setToken(res.data.access_token)
+        this.$router.push("/")
       })
     }
   },
@@ -27,8 +27,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <!-- type checking and auto-completion enabled -->
-  {{ count.toFixed(2) }}
   <input v-model="user.username" placeholder="username">
   <input v-model="user.password" placeholder="password">
   <button @click="login(user)">Login</button>
