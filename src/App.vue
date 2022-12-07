@@ -1,7 +1,24 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent } from 'vue'
+import { mapStores, mapActions } from 'pinia';
+import { useAuthStore } from '@/stores/auth';
+
+export default defineComponent({
+  computed: {
+    ...mapStores(useAuthStore),
+    token(){
+      return this.authStore.token;
+    }
+  },
+  methods: {
+    ...mapActions(useAuthStore, ['logout']),
+  }
+})
+
 </script>
+
 
 <template>
   <header>
@@ -18,7 +35,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/login" v-if="!this.token">Login</RouterLink>
+        <Button v-if="this.token" @click="this.logout">Logout</Button>
+        <RouterLink to="/register">Register</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/companies">Companies</RouterLink>
       </nav>

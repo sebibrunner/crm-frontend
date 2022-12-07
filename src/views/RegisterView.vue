@@ -1,8 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import axios from "axios";
-import { useAuthStore } from '@/stores/auth';
-import { mapActions } from 'pinia';
 
 export default defineComponent({
   data() {
@@ -15,14 +13,13 @@ export default defineComponent({
     }
   },
   methods: {
-    ...mapActions(useAuthStore, ['setToken']),
     login(user) {
       console.log("user: ", user)
-      axios.post("http://localhost:5000/auth/login", user).then((res) => {
-        this.setToken(res.data.access_token)
+      axios.post("http://localhost:5000/users", user).then((res) => {
+        console.log(res);
       })
     }
-  },
+  }
 })
 </script>
 
@@ -31,5 +28,5 @@ export default defineComponent({
   {{ count.toFixed(2) }}
   <input v-model="user.username" placeholder="username">
   <input v-model="user.password" placeholder="password">
-  <button @click="login(user)">Login</button>
+  <button @click="register(user)">Register</button>
 </template>
