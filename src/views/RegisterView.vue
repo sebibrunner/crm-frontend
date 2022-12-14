@@ -13,10 +13,13 @@ export default defineComponent({
     }
   },
   methods: {
-    login(user) {
-      console.log("user: ", user)
+    register(user) {
       axios.post("http://localhost:5000/users", user).then((res) => {
-        console.log(res);
+        if(res.status === 201){
+          this.$router.push("/login")
+        } else {
+          this.$router.push("/register")
+        }
       })
     }
   }
@@ -27,6 +30,6 @@ export default defineComponent({
   <!-- type checking and auto-completion enabled -->
   {{ count.toFixed(2) }}
   <input v-model="user.username" placeholder="username">
-  <input v-model="user.password" placeholder="password">
+  <input v-model="user.password" placeholder="password" type="password">
   <button @click="register(user)">Register</button>
 </template>

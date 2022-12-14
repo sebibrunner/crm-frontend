@@ -34,10 +34,11 @@ export default defineComponent({
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login" v-if="!this.token">Login</RouterLink>
-        <Button v-if="this.token" @click="this.logout">Logout</Button>
+        <a v-if="this.token"><Button @click="this.logout">Logout</Button></a>
         <RouterLink to="/register">Register</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/companies">Companies</RouterLink>
+        <RouterLink to="/invoices">Invoices</RouterLink>
       </nav>
     </div>
   </header>
@@ -58,7 +59,6 @@ header {
 }
 
 nav {
-  width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;

@@ -28,6 +28,6 @@ export default defineComponent({
 
 <template>
   <input v-model="user.username" placeholder="username">
-  <input v-model="user.password" placeholder="password">
+  <input v-model="user.password" placeholder="password" type="password">
   <button @click="login(user)">Login</button>
 </template>
