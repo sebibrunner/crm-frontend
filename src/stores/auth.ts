@@ -3,19 +3,20 @@ import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore("auth", {
   state: () => {
-    return { token: null }
+    return { token: "" };
   },
   // could also be defined as
   // state: () => ({ count: 0 })
   actions: {
-    setToken(token) {
+    setToken(token: string) {
       this.token = token;
     },
     getToken() {
       return this.token;
     },
-    logout(){
-      this.token = null;
-    }
+    logout() {
+      this.token = "";
+    },
   },
+  persist: true,
 });
